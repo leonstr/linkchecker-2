@@ -1,7 +1,7 @@
 <?php
-namespace local_linkchecker;
+namespace local_linkchecker\task;
 
-class link_checker {
+class check_videos_task extends \core\task\scheduled_task {
     public function get_all_videos() {
         global $DB;
         return $DB->get_records('local_linkchecker_videos');
@@ -32,6 +32,14 @@ class link_checker {
     public function update_video_status($id, $status) {
         global $DB;
         $DB->update_record('local_linkchecker_videos', (object) ['id' => $id, 'status' => $status]);
+    }
+
+    public function get_name() {
+        return get_string('checkvideostask', 'local_linkchecker');
+    }
+
+    public function execute() {
+        // FIXME Implement this!
     }
 }
 ?>
